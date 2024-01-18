@@ -8,20 +8,19 @@
 import UIKit
 
 final class LoginViewController: UIViewController {
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
-    
-    //MARK: - Model
+
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setLoginData()
+	}
+    // MARK: - Model
     private let model = NetworkModel.shared
-    
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    //MARK: - Actions
+
+    // MARK: - Actions
 
     @IBAction func buttonTouchCancel(_ sender: Any) {
         zoomOut()
@@ -29,42 +28,46 @@ final class LoginViewController: UIViewController {
     @IBAction func buttonTouchDown(_ sender: Any) {
         zoomIn()
     }
-    
+
     @IBAction func didTapContinueButton(_ sender: Any) {
         zoomOut()
         model.login(
             user: emailTextField.text ?? "",
             password: passwordTextField.text ?? ""
         ) { [weak self] result in
-//            guard let self else { return }
+			guard let self else { return }
+
             switch result {
-                case let .success(token):
-                //*******   Navegar al viewcontroller de heroes
+            case let .success(token):
                 DispatchQueue.main.async {
-                    let heroesListViewController = UIViewController()
-                    self?.navigationController?.setViewControllers([heroesListViewController], animated: true)
+                    let heroesListViewController = HeroListTableViewController()
+                    self.navigationController?.setViewControllers([heroesListViewController], animated: true)
                 }
-                case let .failure(error):
-                //*********
-                    print("🔴 \(error)")
+			case .failure(_):
+				DispatchQueue.main.async {
+					let alert = UIAlertController(title: "Acceso no autorizado", message: "Credenciales erroneas", preferredStyle: .alert)
+					let action = UIAlertAction(title: "Ok", style: .cancel)
+					alert.addAction(action)
+					self.present(alert, animated: true)
+				}
             }
         }
-//NO DEBE IR EN EL LOGIN
+        // NO DEBE IR EN EL LOGIN
         model.getHeroes { result in
             switch result {
-                case let .success(heroes):
-                    print("🟢 \(heroes)")
-                case let .failure(error):
-                    print("⚠️ \(error)")
+            case let .success(heroes):
+                print("🟢 \(heroes)")
+            case let .failure(error):
+                print("⚠️ \(error)")
             }
         }
 
         model.getTransformations { result in
             switch result {
-                case let .success(transformation):
-                    print("🟢 \(transformation)")
-                case let .failure(error):
-                    print("⚠️ \(error)")
+            case let .success(transformation):
+                print("🟢 \(transformation)")
+            case let .failure(error):
+                print("⚠️ \(error)")
             }
         }
     }
@@ -82,7 +85,7 @@ extension LoginViewController {
         ) { [weak self] in
             self?.continueButton.transform = .identity
                 .scaledBy(x: 0.94, y: 0.94)
-            }
+        }
     }
 
     func zoomOut() {
@@ -93,6 +96,15 @@ extension LoginViewController {
             initialSpringVelocity: 2
         ) { [weak self] in
             self?.continueButton.transform = .identity
-            }
+        }
     }
 }
+
+#if DEBUG
+private extension LoginViewController {
+	func setLoginData() {
+		emailTextField.text = "davidortegaiglesias@gmail.com"
+		passwordTextField.text = "abcdef"
+	}
+}
+#endif
