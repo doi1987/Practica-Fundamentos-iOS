@@ -11,13 +11,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(
         _ scene: UIScene,
         willConnectTo session: UISceneSession,
         options connectionOptions: UIScene.ConnectionOptions
     ) {
-        
+
         // Castear UIscene a UIWindowScene
         guard let scene = (scene as? UIWindowScene) else { return }
         // Instanciar un objeto Window con el Scene desempaquetado
@@ -35,4 +34,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 }
-

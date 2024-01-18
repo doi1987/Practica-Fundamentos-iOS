@@ -30,21 +30,21 @@ final class NetworkModelTests: XCTestCase {
 
     func test_login() throws {
         // Given
-        //Codificar el expected token a data
+        // Codificar el expected token a data
         let tokenData = try XCTUnwrap(expectedToken.data(using: .utf8))
-        //Crear usuario y contraseña mockeadas para pasarlas al metodo login
-        let (user,password) = ("user", "password")
-        //Nos aseguramos que el URLProtocol esta bien configurado
+        // Crear usuario y contraseña mockeadas para pasarlas al metodo login
+        let (user, password) = ("user", "password")
+        // Nos aseguramos que el URLProtocol esta bien configurado
         MockURLProtocol.error = nil
         MockURLProtocol.requestHandler = { request in
-            //Configuramos el login string
+            // Configuramos el login string
             let loginString = String(format: "%@:%@", user, password)
             let base64String = loginString.data(using: .utf8)!.base64EncodedString()
-            //Nos aseguramos que el metodo HTTP es el correcto
+            // Nos aseguramos que el metodo HTTP es el correcto
             XCTAssertEqual(request.httpMethod, "POST")
-            //Nos aseguramos que el header de autenticacion es el correcto
+            // Nos aseguramos que el header de autenticacion es el correcto
             XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "Basic \(base64String)")
-            //Creamos la respuesta mockead. Esto actua como un servidor "real" en los tests
+            // Creamos la respuesta mockead. Esto actua como un servidor "real" en los tests
             let response = try XCTUnwrap(
                 HTTPURLResponse(
                     url: URL(string: "https://dragonball.keepcoding.education/")!,
@@ -71,7 +71,7 @@ final class NetworkModelTests: XCTestCase {
             expectation.fulfill()
         }
 
-        //Then
+        // Then
         wait(for: [expectation], timeout: 1)
         XCTAssertNotNil(receivedToken)
         XCTAssertEqual(receivedToken, expectedToken)
@@ -82,6 +82,6 @@ final class NetworkModelTests: XCTestCase {
     }
 
     func test_getTansformation() {
-        
+
     }
 }

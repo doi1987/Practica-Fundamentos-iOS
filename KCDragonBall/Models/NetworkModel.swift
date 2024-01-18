@@ -30,13 +30,13 @@ final class NetworkModel {
         components.host = "dragonball.keepcoding.education"
         return components
     }
-    
+
     private let client: APIClientProtocol
 
     init(client: APIClientProtocol = APIClient()) {
         self.client = client
     }
-    
+
     func login(
         user: String,
         password: String,
@@ -44,31 +44,31 @@ final class NetworkModel {
     ) {
         var components = baseComponents
         components.path = "/api/auth/login"
-        
+
         guard let url = components.url else {
             completion(.failure(.malformedURL))
             return
         }
-        
+
         let loginString = String(format: "%@:%@", user, password)
         guard let loginData = loginString.data(using: .utf8) else {
             completion(.failure(.encodingFailed))
             return
         }
-        //Encodificamos la string con un algoritmo criptografico en base 64
+        // Encodificamos la string con un algoritmo criptografico en base 64
         let base64LoginString = loginData.base64EncodedString()
-        
+
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
-        
+
         client.jwt(urlRequest) { [weak self] result in
             switch result {
-                case let .success(token):
-                    self?.token = token
-                    completion(.success(token))
-                case let .failure(error):
-                    completion(.failure(error))
+            case let .success(token):
+                self?.token = token
+                completion(.success(token))
+            case let .failure(error):
+                completion(.failure(error))
             }
         }
     }
@@ -82,12 +82,12 @@ final class NetworkModel {
             completion(.failure(.malformedURL))
             return
         }
-        
+
         guard let token else {
             completion(.failure(.noToken))
             return
         }
-        
+
         // Crear un objeto URLComponents para encodificarlo posteriormente
         var urlComponents = URLComponents()
         urlComponents.queryItems = [URLQueryItem(name: "name", value: "")]
@@ -117,7 +117,7 @@ final class NetworkModel {
         }
 
         var urlComponents = URLComponents()
-        //************** Como obtener el id
+        // ************** Como obtener el id
         urlComponents.queryItems = [URLQueryItem(name: "id", value: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94")]
 
         var urlRequest = URLRequest(url: url)
@@ -129,5 +129,3 @@ final class NetworkModel {
         client.request(urlRequest, using: [HeroTransformation].self, completion: completion)
     }
 }
-
-

@@ -11,7 +11,7 @@ struct LocalDataModel {
     private enum Constants {
         static let tokenKey = "KCToken"
     }
-    
+
     private static let userDefaults = UserDefaults.standard
 
     static func getToken() -> String? {
