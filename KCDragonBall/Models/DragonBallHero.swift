@@ -8,6 +8,6 @@
 import Foundation
 
 struct DragonBallHero: Codable, Hashable {
-    let photo: String
+    let photo: String?
     let id, name, description: String
 }
