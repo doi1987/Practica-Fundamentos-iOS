@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeroDetailViewController" customModule="KCDragonBall" customModuleProvider="target">
+            <connections>
+                <outlet property="heroDescription" destination="uIz-MU-ESp" id="EQt-jY-ekD"/>
+                <outlet property="heroImage" destination="brA-nM-mLZ" id="7FW-vy-owq"/>
+                <outlet property="heroName" destination="Tox-Dz-f9w" id="rML-Cb-z6q"/>
+                <outlet property="transformationButton" destination="Zbc-5C-sx8" id="gTz-Sj-n3M"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="brA-nM-mLZ" userLabel="heroImage">
+                    <rect key="frame" x="0.0" y="59" width="393" height="300"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="GJS-Mq-8e1"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="heroName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tox-Dz-f9w">
+                    <rect key="frame" x="16" y="391" width="361" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="249" text="gsdgsdfgfsdsgfdgsfgfsdsfgdsfgdsfgddfgssstwryhrsrrrrrjknaoifadipohafpiheaphaefwihfidffhfhf" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIz-MU-ESp" userLabel="heroDescription">
+                    <rect key="frame" x="16" y="431" width="361" height="31.333333333333314"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zbc-5C-sx8">
+                    <rect key="frame" x="16" y="758" width="361" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="U84-q0-61E"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Transformaciones"/>
+                    <connections>
+                        <action selector="didTapTransformationsButton:" destination="-1" eventType="touchUpInside" id="m8W-65-h8w"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Tox-Dz-f9w" secondAttribute="trailing" constant="16" id="4QL-z5-yQi"/>
+                <constraint firstItem="Tox-Dz-f9w" firstAttribute="top" secondItem="brA-nM-mLZ" secondAttribute="bottom" constant="32" id="BmO-DW-HAL"/>
+                <constraint firstItem="Zbc-5C-sx8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="CMt-Pt-w29"/>
+                <constraint firstItem="Zbc-5C-sx8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uIz-MU-ESp" secondAttribute="bottom" constant="32" id="Jw6-S3-qzm"/>
+                <constraint firstItem="uIz-MU-ESp" firstAttribute="top" secondItem="Tox-Dz-f9w" secondAttribute="bottom" constant="16" id="KYz-Ki-4pr"/>
+                <constraint firstItem="brA-nM-mLZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LjE-he-wvd"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="brA-nM-mLZ" secondAttribute="trailing" id="Pmg-tV-dcQ"/>
+                <constraint firstItem="brA-nM-mLZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="a1G-Ew-YGR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zbc-5C-sx8" secondAttribute="trailing" constant="16" id="nej-j9-sQy"/>
+                <constraint firstItem="uIz-MU-ESp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="oF8-Vh-YKF"/>
+                <constraint firstItem="Tox-Dz-f9w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="rNg-cN-o90"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="uIz-MU-ESp" secondAttribute="trailing" constant="16" id="s5P-PG-JKH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Zbc-5C-sx8" secondAttribute="bottom" constant="16" id="sMf-5K-3Mf"/>
+            </constraints>
+            <point key="canvasLocation" x="-2.2900763358778624" y="-12.67605633802817"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
