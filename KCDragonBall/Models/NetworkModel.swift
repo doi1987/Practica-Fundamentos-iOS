@@ -102,6 +102,7 @@ final class NetworkModel {
     }
 
     func getTransformations(
+		heroeId: String,
         completion: @escaping (Result<[HeroTransformation], DragonBallError>) -> Void
     ) {
         var components = baseComponents
@@ -118,7 +119,7 @@ final class NetworkModel {
 
         var urlComponents = URLComponents()
         // ************** Como obtener el id
-        urlComponents.queryItems = [URLQueryItem(name: "id", value: "D13A40E5-4418-4223-9CE6-D2F9A28EBE94")]
+        urlComponents.queryItems = [URLQueryItem(name: "id", value: heroeId)]
 
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"

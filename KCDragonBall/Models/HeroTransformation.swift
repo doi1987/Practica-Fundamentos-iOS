@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct HeroTransformation: Codable {
-    let id: String
-    let photo: String
-    let description: String
-    let name: String
+struct HeroTransformation: DragonBallItem {
+	var photo: String?
+	var id: String
+	var name: String
+	var description: String
 }

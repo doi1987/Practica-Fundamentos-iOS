@@ -38,37 +38,20 @@ final class LoginViewController: UIViewController {
 			guard let self else { return }
 
             switch result {
-            case let .success(token):
-                DispatchQueue.main.async {
-                    let heroesListViewController = HeroListTableViewController()
-                    self.navigationController?.setViewControllers([heroesListViewController], animated: true)
-                }
-			case .failure(_):
-				DispatchQueue.main.async {
-					let alert = UIAlertController(title: "Acceso no autorizado", message: "Credenciales erroneas", preferredStyle: .alert)
-					let action = UIAlertAction(title: "Ok", style: .cancel)
-					alert.addAction(action)
-					self.present(alert, animated: true)
+				case let .success(token):
+					DispatchQueue.main.async {
+						let heroesListViewController = HeroListTableViewController()
+						self.navigationController?.setViewControllers([heroesListViewController], animated: true)
+					}
+				case .failure(_):
+					DispatchQueue.main.async {
+						let alert = UIAlertController(
+							title: "Acceso no autorizado", message: "Credenciales erroneas", preferredStyle: .alert)
+						let action = UIAlertAction(title: "Ok", style: .cancel)
+						alert.addAction(action)
+						self.present(alert, animated: true)
+					}
 				}
-            }
-        }
-        // NO DEBE IR EN EL LOGIN
-        model.getHeroes { result in
-            switch result {
-            case let .success(heroes):
-                print("🟢 \(heroes)")
-            case let .failure(error):
-                print("⚠️ \(error)")
-            }
-        }
-
-        model.getTransformations { result in
-            switch result {
-            case let .success(transformation):
-                print("🟢 \(transformation)")
-            case let .failure(error):
-                print("⚠️ \(error)")
-            }
         }
     }
 }
