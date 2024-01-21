@@ -24,6 +24,9 @@
 		638A21A22B347C0A0027B719 /* KCDragonBallUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638A21A12B347C0A0027B719 /* KCDragonBallUITestsLaunchTests.swift */; };
 		638A21B02B347DC20027B719 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 638A21AE2B347DC20027B719 /* LoginViewController.swift */; };
 		638A21B12B347DC20027B719 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 638A21AF2B347DC20027B719 /* LoginViewController.xib */; };
+		63CA27092B5D262A00417DE0 /* String+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CA27082B5D262A00417DE0 /* String+Utils.swift */; };
+		63CFD29B2B5DADA100DE5B80 /* DragonBallHeroTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFD29A2B5DADA100DE5B80 /* DragonBallHeroTests.swift */; };
+		63CFD29D2B5DB1D900DE5B80 /* String+UtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63CFD29C2B5DB1D900DE5B80 /* String+UtilsTests.swift */; };
 		63D1EE4D2B5AA23A001BE8D2 /* HeroDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D1EE4B2B5AA23A001BE8D2 /* HeroDetailViewController.swift */; };
 		63D1EE4E2B5AA23A001BE8D2 /* HeroDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D1EE4C2B5AA23A001BE8D2 /* HeroDetailViewController.xib */; };
 		63D445E32B4F118400A3ABD4 /* LocalDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D445E22B4F118400A3ABD4 /* LocalDataModel.swift */; };
@@ -31,6 +34,8 @@
 		63D445E72B50500B00A3ABD4 /* HeroTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D445E62B50500B00A3ABD4 /* HeroTransformation.swift */; };
 		63D445E92B505FC500A3ABD4 /* NetworkModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D445E82B505FC500A3ABD4 /* NetworkModelTests.swift */; };
 		63D445EC2B50614200A3ABD4 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D445EB2B50614200A3ABD4 /* MockURLProtocol.swift */; };
+		63D484F22B5BDF7D00CFEF06 /* TransformationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D484F02B5BDF7D00CFEF06 /* TransformationDetailViewController.swift */; };
+		63D484F32B5BDF7D00CFEF06 /* TransformationDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63D484F12B5BDF7D00CFEF06 /* TransformationDetailViewController.xib */; };
 		63DA8D422B4D6C8800D7EADF /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA8D412B4D6C8800D7EADF /* APIClient.swift */; };
 		63DA8D442B4D71B400D7EADF /* NetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DA8D432B4D71B400D7EADF /* NetworkModel.swift */; };
 		63F43C832B59A02D003BA770 /* UImageView+Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F43C822B59A02D003BA770 /* UImageView+Remote.swift */; };
@@ -75,6 +80,9 @@
 		638A21A12B347C0A0027B719 /* KCDragonBallUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCDragonBallUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		638A21AE2B347DC20027B719 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		638A21AF2B347DC20027B719 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		63CA27082B5D262A00417DE0 /* String+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utils.swift"; sourceTree = "<group>"; };
+		63CFD29A2B5DADA100DE5B80 /* DragonBallHeroTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragonBallHeroTests.swift; sourceTree = "<group>"; };
+		63CFD29C2B5DB1D900DE5B80 /* String+UtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+UtilsTests.swift"; sourceTree = "<group>"; };
 		63D1EE4B2B5AA23A001BE8D2 /* HeroDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDetailViewController.swift; sourceTree = "<group>"; };
 		63D1EE4C2B5AA23A001BE8D2 /* HeroDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeroDetailViewController.xib; sourceTree = "<group>"; };
 		63D445E22B4F118400A3ABD4 /* LocalDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataModel.swift; sourceTree = "<group>"; };
@@ -82,6 +90,8 @@
 		63D445E62B50500B00A3ABD4 /* HeroTransformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTransformation.swift; sourceTree = "<group>"; };
 		63D445E82B505FC500A3ABD4 /* NetworkModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModelTests.swift; sourceTree = "<group>"; };
 		63D445EB2B50614200A3ABD4 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		63D484F02B5BDF7D00CFEF06 /* TransformationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformationDetailViewController.swift; sourceTree = "<group>"; };
+		63D484F12B5BDF7D00CFEF06 /* TransformationDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransformationDetailViewController.xib; sourceTree = "<group>"; };
 		63DA8D412B4D6C8800D7EADF /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		63DA8D432B4D71B400D7EADF /* NetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModel.swift; sourceTree = "<group>"; };
 		63F43C822B59A02D003BA770 /* UImageView+Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UImageView+Remote.swift"; sourceTree = "<group>"; };
@@ -171,13 +181,13 @@
 		638A217D2B347C040027B719 /* KCDragonBall */ = {
 			isa = PBXGroup;
 			children = (
-				634A6D812B5AFA9A00F178DB /* TransformationList */,
 				63F43C812B59A009003BA770 /* Extensions */,
+				63D445DE2B4F10D500A3ABD4 /* Models */,
 				63D445DF2B4F111800A3ABD4 /* Login */,
 				63CC17422B55AB9B00F1606E /* HeroList */,
 				63D1EE4A2B5AA20A001BE8D2 /* HeroDetail */,
-				63D445DE2B4F10D500A3ABD4 /* Models */,
-				63EAFDFE2B5AF8B300CD4238 /* HeroList */,
+				634A6D812B5AFA9A00F178DB /* TransformationList */,
+				63D484ED2B5BDF1900CFEF06 /* TransformationDetail */,
 				638A217E2B347C040027B719 /* AppDelegate.swift */,
 				638A21802B347C040027B719 /* SceneDelegate.swift */,
 				638A21872B347C090027B719 /* Assets.xcassets */,
@@ -193,6 +203,8 @@
 				63D445EA2B50612400A3ABD4 /* Helpers */,
 				638A21952B347C0A0027B719 /* KCDragonBallTests.swift */,
 				63D445E82B505FC500A3ABD4 /* NetworkModelTests.swift */,
+				63CFD29A2B5DADA100DE5B80 /* DragonBallHeroTests.swift */,
+				63CFD29C2B5DB1D900DE5B80 /* String+UtilsTests.swift */,
 			);
 			path = KCDragonBallTests;
 			sourceTree = "<group>";
@@ -285,6 +297,31 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		63D484ED2B5BDF1900CFEF06 /* TransformationDetail */ = {
+			isa = PBXGroup;
+			children = (
+				63D484EE2B5BDF2B00CFEF06 /* Controller */,
+				63D484EF2B5BDF3300CFEF06 /* View */,
+			);
+			path = TransformationDetail;
+			sourceTree = "<group>";
+		};
+		63D484EE2B5BDF2B00CFEF06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63D484F02B5BDF7D00CFEF06 /* TransformationDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		63D484EF2B5BDF3300CFEF06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63D484F12B5BDF7D00CFEF06 /* TransformationDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		63EAFDE92B5AB51E00CD4238 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,25 +331,11 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		63EAFDFE2B5AF8B300CD4238 /* HeroList */ = {
-			isa = PBXGroup;
-			children = (
-				63EAFDFF2B5AF8B300CD4238 /* Controller */,
-			);
-			path = HeroList;
-			sourceTree = "<group>";
-		};
-		63EAFDFF2B5AF8B300CD4238 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		63F43C812B59A009003BA770 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				63F43C822B59A02D003BA770 /* UImageView+Remote.swift */,
+				63CA27082B5D262A00417DE0 /* String+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				638A218B2B347C090027B719 /* LaunchScreen.storyboard in Resources */,
+				63D484F32B5BDF7D00CFEF06 /* TransformationDetailViewController.xib in Resources */,
 				634A6D802B5AFA3E00F178DB /* HeroListTableViewController.xib in Resources */,
 				634A6D8B2B5AFDBD00F178DB /* TransformationTableViewCell.xib in Resources */,
 				638A21882B347C090027B719 /* Assets.xcassets in Resources */,
@@ -476,8 +500,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63CA27092B5D262A00417DE0 /* String+Utils.swift in Sources */,
 				634A6D792B5AF93000F178DB /* HeroTableViewCell.swift in Sources */,
 				63D445E72B50500B00A3ABD4 /* HeroTransformation.swift in Sources */,
+				63D484F22B5BDF7D00CFEF06 /* TransformationDetailViewController.swift in Sources */,
 				63F43C832B59A02D003BA770 /* UImageView+Remote.swift in Sources */,
 				634A6D7B2B5AFA1C00F178DB /* HeroListTableViewController.swift in Sources */,
 				638A21B02B347DC20027B719 /* LoginViewController.swift in Sources */,
@@ -498,8 +524,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				63D445EC2B50614200A3ABD4 /* MockURLProtocol.swift in Sources */,
+				63CFD29D2B5DB1D900DE5B80 /* String+UtilsTests.swift in Sources */,
 				63D445E92B505FC500A3ABD4 /* NetworkModelTests.swift in Sources */,
 				638A21962B347C0A0027B719 /* KCDragonBallTests.swift in Sources */,
+				63CFD29B2B5DADA100DE5B80 /* DragonBallHeroTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
