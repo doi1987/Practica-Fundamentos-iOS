@@ -11,102 +11,78 @@ final class HeroListTableViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<Int, DragonBallHero>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, DragonBallHero>
 
-	// MARK: - Outlets
-	@IBOutlet weak var tableView: UITableView!
+    // MARK: - Outlets
+    @IBOutlet weak var tableView: UITableView!
 
-	// MARK: - Model
-	private var heroes: [DragonBallHero] = [] {
-		didSet {
-			DispatchQueue.main.async { [weak self] in
-				guard let self else { return }
+    // MARK: - Model
+    private var heroes: [DragonBallHero] = [] {
+        didSet {
+            DispatchQueue.main.async { [weak self] in
+                guard let self else { return }
 
-				self.tableView.reloadData()
-			}
-		}
-	}
-	
+                setSnapshot()
+            }
+        }
+    }
+
     private let networkModel = NetworkModel.shared
     private var dataSource: DataSource?
-	
+
     // MARK: - View Lifecycle
-	override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
-		guard heroes.isEmpty else {
-			return
-		}
-
-		getHeroesList()
+        setupDatasource()
+        getHeroesList()
     }
 }
 
 // MARK: - Configuration
 private extension HeroListTableViewController {
-	func setUpView() {
-		title = "Dragon Ball Heroes"
-		tableView.dataSource = self
-		tableView.delegate = self
-		tableView.register(
-			UINib(
-				nibName: HeroTableViewCell.nibName,
-				bundle: nil), forCellReuseIdentifier: HeroTableViewCell.identifier)
-		tableView.estimatedRowHeight = 112
+    func setUpView() {
+        title = "Dragon Ball Heroes"
+        tableView.dataSource = dataSource
+        tableView.delegate = self
+        tableView.register(
+            UINib(
+                nibName: HeroTableViewCell.nibName,
+                bundle: nil), forCellReuseIdentifier: HeroTableViewCell.identifier)
+        tableView.estimatedRowHeight = 113
 
-	}
+    }
 
-	func getHeroesList() {
-		// ***** calse 6 min 29
-		//		let registration = UITableView
-		networkModel.getHeroes { [weak self] result in
-			guard let self else { return }
+    func getHeroesList() {
+        networkModel.getHeroes { [weak self] result in
+            guard let self else { return }
 
-			switch result {
-			case let .success(heroes):
-				self.heroes = heroes
-			case let .failure(error):
-				print(error)
-			}
-		}
-	}
-}
+            switch result {
+            case let .success(heroes):
+                self.heroes = heroes
+            case let .failure(error):
+                print(error)
+            }
+        }
+    }
 
-	// MARK: - Table View Data Source
-extension HeroListTableViewController: UITableViewDataSource {
-	func numberOfSections(
-		in tableView: UITableView
-	) -> Int {
-		return 1
-	}
+    func setupDatasource() {
+        dataSource = DataSource(tableView: tableView) { tableView, indexPath, hero in
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: HeroTableViewCell.identifier,
+                for: indexPath
+            ) as? HeroTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.configure(with: hero)
+            return cell
+        }
+    }
 
-	func tableView(
-		_ tableView: UITableView,
-		numberOfRowsInSection section: Int
-	) -> Int {
-		return heroes.count
-	}
-	func tableView(
-		_ tableView: UITableView,
-		cellForRowAt indexPath: IndexPath
-	) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(
-			withIdentifier: HeroTableViewCell.identifier,
-			for: indexPath) as? HeroTableViewCell else {
-			return UITableViewCell()
-		}
-
-		cell.configure(with: heroes[indexPath.row])
-
-		return cell
-
-//		let cell = UITableViewCell()
-//		// ***************
-//		let dragonBallHero = heroes[indexPath.row]
-//		var content = cell.defaultContentConfiguration()
-//		// ************** coger el texto d heroes
-//		content.text = dragonBallHero.name
-//		cell.contentConfiguration = content
-//		return cell
-	}
+    func setSnapshot() {
+        var snapshot = Snapshot()
+        snapshot.appendSections([0])
+        snapshot.appendItems(heroes)
+        dataSource?.apply(snapshot, animatingDifferences: false)
+    }
 }
 
 // MARK: - TableView Delegate
@@ -115,9 +91,9 @@ extension HeroListTableViewController: UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath
     ) {
-		let hero = heroes[indexPath.row]
+        let hero = heroes[indexPath.row]
 
-		let heroDetailViewController = HeroDetailViewController(hero: hero)
-		navigationController?.show(heroDetailViewController, sender: nil)
+        let heroDetailViewController = HeroDetailViewController(hero: hero)
+        navigationController?.show(heroDetailViewController, sender: nil)
     }
 }

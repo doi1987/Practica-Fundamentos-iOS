@@ -13,10 +13,10 @@ final class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
 
-	override func viewDidLoad() {
-		super.viewDidLoad()
-		setLoginData()
-	}
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setLoginData()
+    }
     // MARK: - Model
     private let model = NetworkModel.shared
 
@@ -35,23 +35,23 @@ final class LoginViewController: UIViewController {
             user: emailTextField.text ?? "",
             password: passwordTextField.text ?? ""
         ) { [weak self] result in
-			guard let self else { return }
+            guard let self else { return }
 
             switch result {
-				case let .success(token):
-					DispatchQueue.main.async {
-						let heroesListViewController = HeroListTableViewController()
-						self.navigationController?.setViewControllers([heroesListViewController], animated: true)
-					}
-				case .failure(_):
-					DispatchQueue.main.async {
-						let alert = UIAlertController(
-							title: "Acceso no autorizado", message: "Credenciales erroneas", preferredStyle: .alert)
-						let action = UIAlertAction(title: "Ok", style: .cancel)
-						alert.addAction(action)
-						self.present(alert, animated: true)
-					}
-				}
+            case let .success(token):
+                DispatchQueue.main.async {
+                    let heroesListViewController = HeroListTableViewController()
+                    self.navigationController?.setViewControllers([heroesListViewController], animated: true)
+                }
+            case .failure:
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(
+                        title: "Acceso no autorizado", message: "Credenciales erroneas", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel)
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }
+            }
         }
     }
 }
@@ -85,9 +85,9 @@ extension LoginViewController {
 
 #if DEBUG
 private extension LoginViewController {
-	func setLoginData() {
-		emailTextField.text = "davidortegaiglesias@gmail.com"
-		passwordTextField.text = "abcdef"
-	}
+    func setLoginData() {
+        emailTextField.text = "davidortegaiglesias@gmail.com"
+        passwordTextField.text = "abcdef"
+    }
 }
 #endif
