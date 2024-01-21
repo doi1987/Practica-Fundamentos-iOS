@@ -77,11 +77,153 @@ final class NetworkModelTests: XCTestCase {
         XCTAssertEqual(receivedToken, expectedToken)
     }
 
-    func test_getHeroes() {
+    func testGivenHeroesWhenGetHeroesListThenMatchSuccess() throws {
+        // Given
+        let goku = DragonBallHero(photo: "test", id: "1", name: "goku", description: "me llamo goku")
+        let vegeta = DragonBallHero(photo: "test", id: "2", name: "vegeta", description: "me llamo vegeta")
 
+        let expectedHeroes = [goku, vegeta]
+
+        let heroesData = try XCTUnwrap(JSONEncoder().encode(expectedHeroes))
+
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertEqual(request.httpMethod, "POST")
+
+            let response = try XCTUnwrap(
+                HTTPURLResponse(
+                    url: URL(string: "https://dragonball.keepcoding.education/")!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: ["Content-Type": "application/json"]
+                )
+            )
+            return (response, heroesData)
+        }
+
+        // When
+        let expectation = expectation(description: "Get Heroes success")
+        var heroesResult: [DragonBallHero]?
+
+        sut.getHeroes { result in
+            guard case let .success(heroes) = result else {
+                XCTFail("Expected success but received \(result)")
+                return
+            }
+            heroesResult = heroes
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+
+        XCTAssertNotNil(heroesResult)
+        XCTAssertEqual(heroesResult, expectedHeroes)
     }
 
-    func test_getTansformation() {
+    func testGivenNoDataWhenGetHeroesListThenMatchError() throws {
+        // Given
 
+        MockURLProtocol.error = DragonBallError.noData
+        MockURLProtocol.requestHandler = nil
+
+        // When
+        let expectation = expectation(description: "Get Error")
+        var errorResult: DragonBallError?
+
+        sut.getHeroes { result in
+            guard case let .failure(error) = result else {
+                XCTFail("Expected failure but received \(result)")
+                return
+            }
+            errorResult = error
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+
+        XCTAssertNotNil(errorResult)
+        XCTAssertEqual(errorResult, .noData)
+    }
+
+    func testGivenTransformationWhenGetTransformationListThenMatchSuccess() throws {
+        // Given
+        let kaioKen = HeroTransformation(id: "1", photo: "test", description: "entrenamiento", name: "KaioKen")
+        let ozaru = HeroTransformation(id: "2", photo: "test", description: "mono", name: "Ozaru")
+
+        let expectedTransformations = [kaioKen, ozaru]
+
+        let transformationData = try XCTUnwrap(JSONEncoder().encode(expectedTransformations))
+
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { request in
+            XCTAssertEqual(request.httpMethod, "POST")
+
+            let response = try XCTUnwrap(
+                HTTPURLResponse(
+                    url: URL(string: "https://dragonball.keepcoding.education/")!,
+                    statusCode: 200,
+                    httpVersion: nil,
+                    headerFields: ["Content-Type": "application/json"]
+                )
+            )
+            return (response, transformationData)
+        }
+
+        // When
+        let expectation = expectation(description: "Get Transformation success")
+        var transformationResult: [HeroTransformation]?
+
+        sut.getTransformations(heroeId: "1") { result in
+            guard case let .success(tranformations) = result else {
+                XCTFail("Expected success but received \(result)")
+                return
+            }
+            transformationResult = tranformations
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+
+        XCTAssertNotNil(transformationResult)
+        XCTAssertEqual(transformationResult, expectedTransformations)
+    }
+
+    func testGivenStatusCode500WhenGetTransformationListThenMatchError() throws {
+        // Given
+        let dragonBallError = DragonBallError.statusCode(code: 500)
+        MockURLProtocol.error = nil
+        MockURLProtocol.requestHandler = { _ in
+            let response = try XCTUnwrap(
+                HTTPURLResponse(
+                    url: URL(string: "https://dragonball.keepcoding.education/")!,
+                    statusCode: 500,
+                    httpVersion: nil,
+                    headerFields: ["Content-Type": "application/json"]
+                )
+            )
+            return (response, Data())
+        }
+
+        // When
+        let expectation = expectation(description: "Get Error")
+        var errorResult: DragonBallError?
+
+        sut.getTransformations(heroeId: "1") { result in
+            guard case let .failure(error) = result else {
+                XCTFail("Expected failure but received \(result)")
+                return
+            }
+            errorResult = error
+            expectation.fulfill()
+        }
+
+        // Then
+        wait(for: [expectation], timeout: 1)
+
+        XCTAssertNotNil(errorResult)
+        XCTAssertEqual(errorResult, dragonBallError)
     }
 }

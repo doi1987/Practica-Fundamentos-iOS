@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Custom Error
-enum DragonBallError: Error {
+enum DragonBallError: Error, Equatable {
     case malformedURL
     case noData
     case statusCode(code: Int?)
